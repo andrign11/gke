@@ -1,0 +1,6 @@
+{
+  "name": "Sistem Informasi Jemaat GKE",
+  "description": "Sistem Informasi Jemaat Gereja Kalimantan Evangelis (GKE) - Pengelolaan Kepengurusan, Keuangan, Warga Jemaat, Jadwal Ibadah, Generator Video AI Veo 3 (Text to Video Studio), Manajemen Tugas Pelayanan (Task Board), WhatsApp BOT & Gateway, MPH, Inventaris Aset, Buletin Renungan, dan Portal Warga Jemaat.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

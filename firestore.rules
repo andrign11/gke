@@ -1,0 +1,185 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // User Accounts
+    match /user_accounts/{userId} {
+      allow read, write: if true;
+    }
+
+    // Penatua & Diakon
+    match /penatua_diakon/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Keuangan
+    match /keuangan/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Iuran Kewajiban Warga Jemaat (Jan - Des)
+    match /iuran_kewajiban/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Warga Jemaat
+    match /warga_jemaat/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Jadwal Ibadah
+    match /jadwal_ibadah/{itemId} {
+      allow read, write: if true;
+    }
+
+    // MPH Jemaat
+    match /mph_jemaat/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Inventaris Aset
+    match /inventaris_aset/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Jadwal Pemeliharaan & Servis Aset Gereja
+    match /pemeliharaan_aset/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Renungan & Buletin
+    match /renungan/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Pendaftaran Anggota Baru
+    match /pendaftaran/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Rancangan Khotbah
+    match /rancangan_khotbah/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Lingkungan Jemaat
+    match /lingkungan_jemaat/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Agenda Surat Masuk & Keluar
+    match /agenda_surat/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Pelayanan Menikah, Baptis, Sidi & Pengarsipan Surat
+    match /pelayanan_sakramen/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Berita & Warta Jemaat
+    match /berita_jemaat/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Jadwal Katekisasi (Pernikahan & SIDI)
+    match /jadwal_katekisasi/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Seksi Kategorial (Pengurus & Kegiatan)
+    match /pengurus_kategorial/{itemId} {
+      allow read, write: if true;
+    }
+    match /kegiatan_kategorial/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Pembacaan Alkitab
+    match /pembacaan_alkitab/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Panitia Pembangunan & Proyek
+    match /pengurus_pembangunan/{itemId} {
+      allow read, write: if true;
+    }
+    match /proyek_pembangunan/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Perpustakaan & Bahan Pengajaran Rohani
+    match /materi_pengajaran/{itemId} {
+      allow read, write: if true;
+    }
+    match /katalog_buku/{itemId} {
+      allow read, write: if true;
+    }
+    match /peminjaman_buku/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Pemilihan Majelis / Panitia & E-Voting
+    match /sesi_pemilihan/{itemId} {
+      allow read, write: if true;
+    }
+    match /kandidat_pemilihan/{itemId} {
+      allow read, write: if true;
+    }
+    match /suara_voting/{itemId} {
+      allow read, write: if true;
+    }
+    match /nominasi_aspirasi/{itemId} {
+      allow read, write: if true;
+    }
+
+    // System Settings & Kop Surat
+    match /settings/{docId} {
+      allow read, write: if true;
+    }
+
+    // Pembuat Pamflet & Flyer Ibadah (AI Studio)
+    match /pamflet_ibadah/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Almanak Nast GKE (Bacaan Harian & Khotbah Liturgis Sinode GKE)
+    match /almanak_nast_gke/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Manajemen Tugas Pelayanan & Task Board
+    match /pelayanan_tasks/{itemId} {
+      allow read, write: if true;
+    }
+    match /pelayanan_tugas/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Laporan Bug & Kendala Sistem
+    match /laporan_bug/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Catatan Log Audit & Keamanan Sistem
+    match /audit_logs/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Riwayat Log Pesan WhatsApp Bot
+    match /whatsapp_message_logs/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Singer / Pemandu Lagu Jemaat
+    match /singer_jemaat/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Default Fallback Catch-all Rule for All Collections
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
+

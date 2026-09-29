@@ -1,0 +1,500 @@
+{
+  "entities": {
+    "UserAccount": {
+      "title": "UserAccount",
+      "description": "User accounts and permissions for the GKE system",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "username": { "type": "string" },
+        "namaLengkap": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "bendahara", "sekretaris", "warga"] },
+        "status": { "type": "string", "enum": ["aktif", "nonaktif"] },
+        "lastLogin": { "type": "string" },
+        "noHp": { "type": "string" },
+        "password": { "type": "string" }
+      },
+      "required": ["username", "namaLengkap", "email", "role", "status"]
+    },
+    "PenatuaDiakon": {
+      "title": "PenatuaDiakon",
+      "description": "Church elders and deacons records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nama": { "type": "string" },
+        "gelar": { "type": "string" },
+        "jabatan": { "type": "string" },
+        "rayon": { "type": "string" },
+        "tanggalPenahbisan": { "type": "string" },
+        "masaBakti": { "type": "string" },
+        "status": { "type": "string" },
+        "noHp": { "type": "string" },
+        "foto": { "type": "string" },
+        "alamat": { "type": "string" }
+      },
+      "required": ["nama", "jabatan", "status"]
+    },
+    "KeuanganItem": {
+      "title": "KeuanganItem",
+      "description": "Financial records (income and expenses)",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tanggal": { "type": "string" },
+        "jenis": { "type": "string", "enum": ["pemasukan", "pengeluaran"] },
+        "kategori": { "type": "string" },
+        "jumlah": { "type": "number" },
+        "keterangan": { "type": "string" },
+        "noReferensi": { "type": "string" },
+        "disetujuiOleh": { "type": "string" }
+      },
+      "required": ["tanggal", "jenis", "kategori", "jumlah"]
+    },
+    "WargaJemaat": {
+      "title": "WargaJemaat",
+      "description": "Congregation member profiles",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "noKjj": { "type": "string" },
+        "namaLengkap": { "type": "string" },
+        "nik": { "type": "string" },
+        "jenisKelamin": { "type": "string" },
+        "tempatLahir": { "type": "string" },
+        "tanggalLahir": { "type": "string" },
+        "rayon": { "type": "string" },
+        "statusKeanggotaan": { "type": "string" },
+        "statusBaptis": { "type": "boolean" },
+        "statusSidi": { "type": "boolean" },
+        "statusNikah": { "type": "string" },
+        "pekerjaan": { "type": "string" },
+        "alamat": { "type": "string" },
+        "noHp": { "type": "string" },
+        "hubunganKeluarga": { "type": "string" }
+      },
+      "required": ["namaLengkap", "rayon", "statusKeanggotaan"]
+    },
+    "JadwalIbadah": {
+      "title": "JadwalIbadah",
+      "description": "Worship schedules and liturgy assignments",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tanggal": { "type": "string" },
+        "waktu": { "type": "string" },
+        "namaIbadah": { "type": "string" },
+        "tempat": { "type": "string" },
+        "pengkhotbah": { "type": "string" },
+        "liturgos": { "type": "string" },
+        "pemusik": { "type": "string" },
+        "kantoria": { "type": "string" },
+        "operatorMultimedia": { "type": "string" },
+        "wartaKhusus": { "type": "string" },
+        "sektorRayon": { "type": "string" }
+      },
+      "required": ["tanggal", "waktu", "namaIbadah", "tempat"]
+    },
+    "MPHMember": {
+      "title": "MPHMember",
+      "description": "Majelis Pekerja Harian board members",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "jabatan": { "type": "string" },
+        "nama": { "type": "string" },
+        "gelar": { "type": "string" },
+        "periode": { "type": "string" },
+        "noHp": { "type": "string" },
+        "foto": { "type": "string" }
+      },
+      "required": ["jabatan", "nama", "periode"]
+    },
+    "InventarisAset": {
+      "title": "InventarisAset",
+      "description": "Church assets inventory items",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "kodeAset": { "type": "string" },
+        "namaBarang": { "type": "string" },
+        "kategori": { "type": "string" },
+        "tanggalPerolehan": { "type": "string" },
+        "kuantitas": { "type": "number" },
+        "satuan": { "type": "string" },
+        "kondisi": { "type": "string" },
+        "nilaiAset": { "type": "number" },
+        "lokasiPenyimpanan": { "type": "string" },
+        "penanggungJawab": { "type": "string" }
+      },
+      "required": ["kodeAset", "namaBarang", "kategori", "kondisi"]
+    },
+    "PemeliharaanAset": {
+      "title": "PemeliharaanAset",
+      "description": "Church asset maintenance and service schedules and alerts",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "asetId": { "type": "string" },
+        "kodeAset": { "type": "string" },
+        "namaBarang": { "type": "string" },
+        "kategoriAset": { "type": "string" },
+        "lokasiAset": { "type": "string" },
+        "judulPemeliharaan": { "type": "string" },
+        "jenisPemeliharaan": { "type": "string" },
+        "tingkatPrioritas": { "type": "string" },
+        "tanggalTerakhirServis": { "type": "string" },
+        "tanggalJatuhTempo": { "type": "string" },
+        "siklusBulan": { "type": "number" },
+        "status": { "type": "string" },
+        "tanggalSelesai": { "type": "string" },
+        "biayaEstimasi": { "type": "number" },
+        "biayaRealisasi": { "type": "number" },
+        "penanggungJawabInternal": { "type": "string" },
+        "kontakPenanggungJawab": { "type": "string" },
+        "teknisiVendor": { "type": "string" },
+        "kontakTeknisiVendor": { "type": "string" },
+        "keterangan": { "type": "string" },
+        "tindakanPerbaikan": { "type": "string" },
+        "kondisiAsetSetelahServis": { "type": "string" },
+        "notifikasiTerkirim": { "type": "boolean" },
+        "notifikasiTerakhirDikirim": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["asetId", "kodeAset", "namaBarang", "judulPemeliharaan", "tanggalJatuhTempo", "status"]
+    },
+    "RenunganItem": {
+      "title": "RenunganItem",
+      "description": "Daily devotionals and sermon notes",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tanggal": { "type": "string" },
+        "judul": { "type": "string" },
+        "natsAlkitab": { "type": "string" },
+        "penulis": { "type": "string" },
+        "isi": { "type": "string" },
+        "aplikasiDoa": { "type": "string" },
+        "kategori": { "type": "string" },
+        "dipublikasikan": { "type": "boolean" }
+      },
+      "required": ["tanggal", "judul", "natsAlkitab", "isi"]
+    },
+    "AppSettings": {
+      "title": "AppSettings",
+      "description": "Church identity and official print configuration",
+      "type": "object",
+      "properties": {
+        "namaAplikasi": { "type": "string" },
+        "namaJemaat": { "type": "string" },
+        "resortGke": { "type": "string" },
+        "alamatGereja": { "type": "string" },
+        "telepon": { "type": "string" },
+        "email": { "type": "string" },
+        "website": { "type": "string" },
+        "logoUrl": { "type": "string" },
+        "headerKopLine1": { "type": "string" },
+        "headerKopLine2": { "type": "string" },
+        "namaKetuaJemaat": { "type": "string" },
+        "namaBendahara": { "type": "string" },
+        "namaSekretaris": { "type": "string" },
+        "nipKetuaJemaat": { "type": "string" },
+        "nipBendahara": { "type": "string" },
+        "nipSekretaris": { "type": "string" }
+      },
+      "required": ["namaAplikasi", "namaJemaat", "resortGke", "alamatGereja"]
+    },
+    "Lingkungan": {
+      "title": "Lingkungan",
+      "description": "Jemaat neighborhood sectors and leadership",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "kode": { "type": "string" },
+        "nama": { "type": "string" },
+        "wilayahSektor": { "type": "string" },
+        "ketuaLingkungan": { "type": "string" },
+        "sekretarisLingkungan": { "type": "string" },
+        "jumlahKeluarga": { "type": "number" },
+        "keterangan": { "type": "string" },
+        "status": { "type": "string", "enum": ["Aktif", "Nonaktif"] }
+      },
+      "required": ["kode", "nama", "status"]
+    },
+    "SingerJemaat": {
+      "title": "SingerJemaat",
+      "description": "Congregation singers and praise song leaders for church liturgies",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nama": { "type": "string" },
+        "suara": { "type": "string", "enum": ["Sopran", "Alto", "Tenor", "Bass", "Campuran", "Pemandu Umum"] },
+        "rayon": { "type": "string" },
+        "noHp": { "type": "string" },
+        "wargaId": { "type": "string" },
+        "status": { "type": "string", "enum": ["Aktif", "Nonaktif"] },
+        "keterangan": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["nama", "status"]
+    },
+    "AgendaSurat": {
+      "title": "AgendaSurat",
+      "description": "Incoming and outgoing correspondence agenda",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "jenis": { "type": "string", "enum": ["surat_masuk", "surat_keluar"] },
+        "noAgenda": { "type": "string" },
+        "noSurat": { "type": "string" },
+        "tanggalSurat": { "type": "string" },
+        "tanggalTerimaKirim": { "type": "string" },
+        "pengirim": { "type": "string" },
+        "penerima": { "type": "string" },
+        "perihal": { "type": "string" },
+        "sifatSurat": { "type": "string" },
+        "lampiran": { "type": "string" },
+        "ringkasanIsi": { "type": "string" },
+        "disposisi": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["jenis", "noAgenda", "noSurat", "tanggalSurat", "pengirim", "penerima", "perihal"]
+    },
+    "PelayananSakramen": {
+      "title": "PelayananSakramen",
+      "description": "Pelayanan Menikah, Baptisan Kudus, Peneguhan Sidi dan pengarsipan nomor surat sakramen",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "jenisPelayanan": { "type": "string", "enum": ["baptis", "sidi", "nikah"] },
+        "noSuratResmi": { "type": "string" },
+        "tanggalPelayanan": { "type": "string" },
+        "tempatPelayanan": { "type": "string" },
+        "pelayanFirman": { "type": "string" },
+        "namaUtama": { "type": "string" },
+        "namaPasangan": { "type": "string" },
+        "namaAyah": { "type": "string" },
+        "namaIbu": { "type": "string" },
+        "tempatTanggalLahir": { "type": "string" },
+        "saksi1": { "type": "string" },
+        "saksi2": { "type": "string" },
+        "status": { "type": "string" },
+        "catatanPastoral": { "type": "string" },
+        "tersimpanKeAgendaSurat": { "type": "boolean" }
+      },
+      "required": ["jenisPelayanan", "noSuratResmi", "tanggalPelayanan", "namaUtama"]
+    },
+    "BeritaJemaat": {
+      "title": "BeritaJemaat",
+      "description": "Warta Jemaat weekly bulletins, worship details, financial summaries, and announcements",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nomorEdisi": { "type": "string" },
+        "tanggalTerbit": { "type": "string" },
+        "judulWarta": { "type": "string" },
+        "temaKhotbah": { "type": "string" },
+        "natsPembimbing": { "type": "string" },
+        "status": { "type": "string", "enum": ["Draf", "Diterbitkan", "Arsip"] },
+        "catatanGembala": { "type": "string" }
+      },
+      "required": ["nomorEdisi", "tanggalTerbit", "judulWarta", "status"]
+    },
+    "AlmanakNastGKE": {
+      "title": "AlmanakNastGKE",
+      "description": "Almanak Nast GKE daily readings and liturgical lectionary",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tanggal": { "type": "string" },
+        "hari": { "type": "string" },
+        "keteranganHari": { "type": "string" },
+        "warnaStola": { "type": "string" },
+        "nastBacaan": { "type": "string" },
+        "nastKhotbah": { "type": "string" },
+        "isHariRaya": { "type": "boolean" },
+        "temaMinggu": { "type": "string" },
+        "judulPerikop": { "type": "string" },
+        "judulPerikopBacaan": { "type": "string" },
+        "judulPerikopKhotbah": { "type": "string" },
+        "perikop": { "type": "string" }
+      },
+      "required": ["tanggal", "hari", "nastBacaan"]
+    },
+    "PelayananTask": {
+      "title": "PelayananTask",
+      "description": "Task Board and ministry assignments for church commissions and committees",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "judul": { "type": "string" },
+        "deskripsi": { "type": "string" },
+        "kategori": { "type": "string" },
+        "prioritas": { "type": "string" },
+        "status": { "type": "string" },
+        "penanggungJawab": { "type": "string" },
+        "penanggungJawabRole": { "type": "string" },
+        "penanggungJawabHp": { "type": "string" },
+        "tenggatWaktu": { "type": "string" },
+        "tanggalDibuat": { "type": "string" },
+        "dibuatOleh": { "type": "string" },
+        "subtasks": { "type": "array" },
+        "catatanProgres": { "type": "array" },
+        "lampiranUrl": { "type": "string" },
+        "tags": { "type": "array" }
+      },
+      "required": ["judul", "kategori", "prioritas", "status", "penanggungJawab", "tenggatWaktu"]
+    },
+    "LaporanBug": {
+      "title": "LaporanBug",
+      "description": "Bug report and technical issue tracking",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "judul": { "type": "string" },
+        "kategori": { "type": "string" },
+        "prioritas": { "type": "string", "enum": ["Rendah", "Sedang", "Tinggi", "Kritis"] },
+        "halamanTerkait": { "type": "string" },
+        "deskripsi": { "type": "string" },
+        "langkahReproduksi": { "type": "string" },
+        "pesanError": { "type": "string" },
+        "lampiranUrl": { "type": "string" },
+        "status": { "type": "string", "enum": ["Baru", "Dalam Penanganan", "Selesai", "Ditolak"] },
+        "tanggalLapor": { "type": "string" },
+        "pelapor": { "type": "object" },
+        "infoPerangkat": { "type": "object" },
+        "tanggapanAdmin": { "type": "string" },
+        "ditanganiOleh": { "type": "string" },
+        "tanggalUpdate": { "type": "string" }
+      },
+      "required": ["id", "judul", "kategori", "prioritas", "deskripsi", "status", "tanggalLapor", "pelapor"]
+    },
+    "AuditLog": {
+      "title": "AuditLog",
+      "description": "System security audit trail and activity log history",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "kategori": { "type": "string" },
+        "aktivitas": { "type": "string" },
+        "detail": { "type": "string" },
+        "pengguna": { "type": "string" },
+        "role": { "type": "string" },
+        "level": { "type": "string" },
+        "status": { "type": "string" },
+        "modulTerkait": { "type": "string" }
+      },
+      "required": ["id", "timestamp", "kategori", "aktivitas"]
+    }
+  },
+  "firestore": {
+    "/pelayanan_tugas/{itemId}": {
+      "schema": { "$ref": "#/entities/PelayananTask" },
+      "description": "Task Board and ministry assignments collection"
+    },
+    "/user_accounts/{userId}": {
+      "schema": { "$ref": "#/entities/UserAccount" },
+      "description": "User accounts collection"
+    },
+    "/penatua_diakon/{itemId}": {
+      "schema": { "$ref": "#/entities/PenatuaDiakon" },
+      "description": "Elders and deacons collection"
+    },
+    "/keuangan/{itemId}": {
+      "schema": { "$ref": "#/entities/KeuanganItem" },
+      "description": "Church finances collection"
+    },
+    "/warga_jemaat/{itemId}": {
+      "schema": { "$ref": "#/entities/WargaJemaat" },
+      "description": "Congregation members collection"
+    },
+    "/jadwal_ibadah/{itemId}": {
+      "schema": { "$ref": "#/entities/JadwalIbadah" },
+      "description": "Worship schedules collection"
+    },
+    "/mph_jemaat/{itemId}": {
+      "schema": { "$ref": "#/entities/MPHMember" },
+      "description": "MPH leadership board members collection"
+    },
+    "/inventaris_aset/{itemId}": {
+      "schema": { "$ref": "#/entities/InventarisAset" },
+      "description": "Church asset inventory collection"
+    },
+    "/pemeliharaan_aset/{itemId}": {
+      "schema": { "$ref": "#/entities/PemeliharaanAset" },
+      "description": "Church asset maintenance schedule and service collection"
+    },
+    "/renungan/{itemId}": {
+      "schema": { "$ref": "#/entities/RenunganItem" },
+      "description": "Devotionals and sermons collection"
+    },
+    "/settings/config": {
+      "schema": { "$ref": "#/entities/AppSettings" },
+      "description": "Church system configuration document"
+    },
+    "/lingkungan_jemaat/{itemId}": {
+      "schema": { "$ref": "#/entities/Lingkungan" },
+      "description": "Jemaat neighborhood sectors collection"
+    },
+    "/agenda_surat/{itemId}": {
+      "schema": { "$ref": "#/entities/AgendaSurat" },
+      "description": "Agenda surat masuk and surat keluar collection"
+    },
+    "/pelayanan_sakramen/{itemId}": {
+      "schema": { "$ref": "#/entities/PelayananSakramen" },
+      "description": "Pelayanan sakramen nikah, baptis, sidi collection"
+    },
+    "/berita_jemaat/{itemId}": {
+      "schema": { "$ref": "#/entities/BeritaJemaat" },
+      "description": "Warta Jemaat weekly bulletins collection"
+    },
+    "/jadwal_katekisasi/{itemId}": {
+      "schema": { "type": "object" },
+      "description": "Jadwal katekisasi collection"
+    },
+    "/pendaftaran/{itemId}": {
+      "schema": { "type": "object" },
+      "description": "Pendaftaran anggota baru collection"
+    },
+    "/rancangan_khotbah/{itemId}": {
+      "schema": { "type": "object" },
+      "description": "Rancangan khotbah collection"
+    },
+    "/pengurus_kategorial/{itemId}": {
+      "schema": { "type": "object" },
+      "description": "Pengurus seksi kategorial collection"
+    },
+    "/kegiatan_kategorial/{itemId}": {
+      "schema": { "type": "object" },
+      "description": "Kegiatan seksi kategorial collection"
+    },
+    "/pengurus_pembangunan/{itemId}": {
+      "schema": { "type": "object" },
+      "description": "Pengurus panitia pembangunan collection"
+    },
+    "/proyek_pembangunan/{itemId}": {
+      "schema": { "type": "object" },
+      "description": "Proyek pembangunan collection"
+    },
+    "/almanak_nast_gke/{itemId}": {
+      "schema": { "$ref": "#/entities/AlmanakNastGKE" },
+      "description": "Almanak Nast GKE daily and liturgical lectionary readings collection"
+    },
+    "/laporan_bug/{itemId}": {
+      "schema": { "$ref": "#/entities/LaporanBug" },
+      "description": "Bug reports, technical issues, and system error tracking collection"
+    },
+    "/audit_logs/{itemId}": {
+      "schema": { "$ref": "#/entities/AuditLog" },
+      "description": "Security audit trail and system activity logs collection"
+    },
+    "/whatsapp_message_logs/{itemId}": {
+      "schema": { "type": "object" },
+      "description": "WhatsApp Bot incoming and outgoing message history"
+    }
+  }
+}
